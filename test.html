@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1"> 
+        <meta charset="UTF-8"> 
+        <title>Spine Animation</title> 
+    </head> 
+    <body> 
+        <div id="character"></div> 
+        <script src="spine_player/pixi.js"></script> 
+        <script src="spine_player/pixi-spine.js"></script>
+        <script> 
+            function init() { 
+                const app = new PIXI.Application({
+                    width: 200, 
+                    height: 350, 
+                    backgroundColor: 0x000000,
+                    backgroundAlpha: 0
+                });
+                document.getElementById("character").appendChild(app.view);
+
+                PIXI.Assets.load('spine_animation/skeleton.json').then((spineData) => {
+                    const animation = new PIXI.spine.Spine(spineData.spineData);
+                    animation.x = app.screen.width/2;
+                    animation.y = app.screen.height/2;
+
+                    app.stage.addChild(animation);
+
+                    animation.state.setAnimation(0, 'animation', true);
+                });
+            } 
+            init();
+        </script> 
+    </body> 
+</html>
+
