@@ -21,8 +21,8 @@
 
                 PIXI.Assets.load('spine_animation/skeleton.json').then((spineData) => {
                     const animation = new PIXI.spine.Spine(spineData.spineData);
-                    animation.x = app.screen.width/2;
-                    animation.y = app.screen.height/2;
+                    animation.x = app.screen.width/2-13;
+                    animation.y = app.screen.height/2+20;
 
                     app.stage.addChild(animation);
 
